@@ -1,0 +1,54 @@
+{
+  "title": "Patient Creation Form",
+  "description": "Please enter patient information",
+  "type": "object",
+  "required": [
+    "first-name",
+    "last-name",
+    "date-of-birth",
+    "mrn",
+    "gender",
+    "phone",
+    "address",
+    "zip-code"
+  ],
+  "properties": {
+    "first-name": {
+      "type": "string",
+      "title": "First Name"
+    },
+    "last-name": {
+      "type": "string",
+      "title": "Last Name"
+    },
+    "date-of-birth": {
+      "type": "string",
+      "format": "date",
+      "title": "Birth Date"
+    },
+    "mrn": {
+      "type": "string",
+      "title": "MRN"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["Male", "Female"],
+      "title": "Gender",
+      "default": "Male"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone",
+      "minLength": 10
+    },
+    "address": {
+      "type": "string",
+      "title": "Address"
+    },
+    "zip-code": {
+      "type": "integer",
+      "title": "Zip Code",
+      "minLength": 6
+    }
+  }
+}

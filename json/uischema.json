@@ -1,0 +1,29 @@
+{
+  "object_values": {
+    "ui:order": [
+      "referer_name",
+      "referer_job_title",
+      "referer_phone_number",
+      "referer_email",
+      "mobility_status",
+      "pressure_relieving_equipment",
+      "nutrition",
+      "dietary_supplements_taken",
+      "medical-history",
+      "diabetes",
+      "peripheral_vascular",
+      "cardiac_disease",
+      "malignancy",
+      "medical_history_other",
+      "medical_history_other_text",
+      "*",
+      "have_signs_of_infection_been_observed",
+      "swab",
+      "bloods",
+      "antibiotics_started",
+      "intervention_made_other",
+      "intervention_made_other_text",
+      "infection_and_interventions_made"
+    ]
+  }
+}

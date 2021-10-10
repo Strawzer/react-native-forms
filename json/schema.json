@@ -1,0 +1,286 @@
+{
+  "title": "Add Patient",
+  "description": "Please enter patient information",
+  "type": "object",
+  "required": [
+    "mrn",
+    "gender"
+  ],
+  "properties": {
+    "initials": {
+      "type": "string",
+      "title": "initials"
+    },
+    "current_dob": {
+      "type": "string",
+      "format": "date",
+      "title": "Date of birth"
+    },
+    "mrn": {
+      "type": "string",
+      "title": "NHS Number"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["Male", "Female", "Null"],
+      "title": "Gender",
+      "default": "Male"
+    },
+    "object_values": {
+      "type": "object",
+      "title": "",
+      "required": [
+        "referer_name",
+        "referer_job_title",
+        "referer_phone_number",
+        "referer_email"
+      ],
+      "properties": {
+        "referer_name": {
+          "type": "string",
+          "title": "Referrer's name"
+        },
+        "referer_job_title": {
+          "type": "string",
+          "title": "Referrer's job title"
+        },
+        "referer_phone_number": {
+          "type": "string",
+          "title": "Referrer's phone number"
+        },
+        "referer_email": {
+          "type": "string",
+          "title": "Referrer's email"
+        },
+        "mobility_status": {
+          "type": "string",
+          "enum": ["Bed bound", "Chair bound", "Fully mobile", "Mobile with aid"],
+          "title": "Mobility status"
+        },
+        "pressure_relieving_equipment": {
+          "type": "string",
+          "enum": [
+            "Domestic mattress",
+            "Dynamic air mattress/overlay",
+            "static pressure relieving mattress/overlay",
+            "Heels offloaded",
+            "Dynamic air cushion",
+            "None",
+            "Other"
+          ],
+          "title": "Pressure relieving equipment",
+          "default": "None"
+        },
+        "nutrition": {
+          "type": "string",
+          "enum": [
+            "Good oral intake",
+            "Good dietary supplements taken (specify bellow)",
+            "Poor oral intake",
+            "PEG fed"
+          ],
+          "title": "Nutrition"
+        },
+        "medical-history": {
+          "type": "object",
+          "title": "Medical History",
+          "properties": {
+
+          }
+        },
+        "diabetes": {
+          "type": "boolean",
+          "title": "Diabetes"
+        },
+        "peripheral_vascular": {
+          "type": "boolean",
+          "title": "Peripheral vascular disease/amputation"
+        },
+        "cardiac_disease": {
+          "type": "boolean",
+          "title": "Cardiac disease"
+        },
+        "malignancy": {
+          "type": "boolean",
+          "title": "Malignancy"
+        },
+        "medical_history_other": {
+          "type": "boolean",
+          "title": "Other"
+        },
+        "additional-information": {
+          "type": "object",
+          "title": "Additional information",
+          "properties": {
+
+          }
+        },
+        "additional_co_morbidities": {
+          "type": "string",
+          "title": "Referrer's email"
+        },
+        "medications": {
+          "type": "string",
+          "title": "Medications"
+        },
+        "continence_status": {
+          "type": "string",
+          "enum": [
+            "Continent",
+            "Incontinent",
+            "Faecally incontinent",
+            "Doubly incontinent",
+            "Catheterised",
+            "Urostomy/stoma"
+           ], 
+          "title": "Continence status"
+        },
+        "date_of_most_recent_doppler": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of most recent Doppler"
+        },
+        "left_ABPI": {
+          "type": "string",
+          "title": "Left ABPI"
+        },
+        "right_ABPI": {
+          "type": "string",
+          "title": "Right ABPI"
+        },
+        "left_toe_brachial_index": {
+          "type": "string",
+          "title": "Left Toe Brachial Index (TBI)"
+        },
+        "right_TBI": {
+          "type": "string",
+          "title": "Right TBI"
+        },     
+        "date_of_most_recent_HBA1C_test": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of most recent HBA1C test"
+        },
+        "HBA1C_results": {
+          "type": "string",
+          "title": "HBA1C results"
+        },  
+        "have_signs_of_infection_been_observed": {
+          "type": "string",
+          "enum": [
+            "No",
+            "Yes"
+           ], 
+          "title": "Continence status",
+          "default": "No"
+        },
+        "infection_and_interventions_made": {
+          "type": "string",
+          "title": "Add additional information relating to infection and intervetions made"
+        }
+      },
+      "dependencies": {
+        "nutrition": {
+          "oneOf": [
+            {
+              "properties": {
+                "nutrition": {
+                  "enum": [
+                    "Good oral intake"
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "nutrition": {
+                  "enum": [
+                    "Good dietary supplements taken (specify bellow)"
+                  ]
+                },
+                "dietary_supplements_taken": {
+                  "title": "Dietary supplements",
+                  "type" : "string"
+                }
+              }
+            },
+            {
+              "properties": {
+                "nutrition": {
+                  "enum": [
+                    "Poor oral intake"
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "nutrition": {
+                  "enum": [
+                    "PEG fed"
+                  ]
+                }
+              }
+            }
+          ]
+        }, 
+        "medical_history_other": {
+          "properties": {
+            "medical_history_other_text": {
+                "type": "string",
+                "title": "Other medical history"
+            }
+          }
+        },
+        "have_signs_of_infection_been_observed": {
+          "oneOf": [
+            {
+              "properties": {
+                "have_signs_of_infection_been_observed": {
+                  "enum": [
+                    "No"
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "have_signs_of_infection_been_observed": {
+                  "enum": [
+                    "Yes"
+                  ]
+                },
+                "swab": {
+                  "type": "boolean",
+                  "title": "Swab"
+                },
+                "bloods": {
+                  "type": "boolean",
+                  "title": "Bloods"
+                },
+                "antibiotics_started": {
+                  "type": "boolean",
+                  "title": "Antibiotics started"
+                },
+                "intervention_made_other": {
+                  "type": "boolean",
+                  "title": "Other"
+                }
+              },
+              "dependencies": {
+                "intervention_made_other": {
+                  "properties": {
+                    "intervention_made_other_text": {
+                      "type": "string",
+                      "title": "Other intervention made"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
